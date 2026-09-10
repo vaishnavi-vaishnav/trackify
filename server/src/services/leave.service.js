@@ -21,7 +21,7 @@ const { isValidISODate, eachWorkingDay, daysBetween } = require("../utils/dates"
  * The day status an approved request stamps onto the calendar.
  *
  * Working from home and flyback are working days recorded as themselves;
- * vacation, sick and other are time away and all read as leave.
+ * leave, sick and other are time away and all read as leave.
  */
 const ATTENDANCE_STATUS_BY_TYPE = {
     wfh: "wfh",
@@ -79,7 +79,7 @@ const validateDates = (startDate, endDate) => {
 const createLeaveRequest = async ({
     userId,
     projectId = null,
-    leaveType = "vacation",
+    leaveType = "leave",
     startDate,
     endDate,
     reason,

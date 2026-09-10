@@ -102,8 +102,8 @@ function AttendanceHistory() {
           My attendance
         </h1>
         <p className="mt-1.5 text-sm text-muted">
-          {monthLabel(month)} · {records.length} recorded{" "}
-          {records.length === 1 ? "day" : "days"}
+          {monthLabel(month)} · {records.length} working{" "}
+          {records.length === 1 ? "day" : "days"} so far
         </p>
       </header>
 
@@ -172,8 +172,8 @@ function AttendanceHistory() {
           {total === 0 ? (
             <EmptyState
               icon={CalendarDays}
-              title="Nothing recorded yet"
-              description="Mark a day from your dashboard and it will show up here."
+              title="No working days yet"
+              description="Days appear here as the month progresses."
             />
           ) : (
             <>
@@ -201,7 +201,7 @@ function AttendanceHistory() {
               Week by week
             </h2>
             <p className="text-xs text-muted">
-              Each week of {monthLabel(month)} that has records
+              Each week of {monthLabel(month)} so far
             </p>
           </div>
 
@@ -209,7 +209,7 @@ function AttendanceHistory() {
             <EmptyState
               icon={CalendarRange}
               title="No weekly data"
-              description="Weeks appear here once you mark some days."
+              description="Weeks appear here as the month progresses."
             />
           ) : (
             <Table className="rounded-none border-0">
@@ -254,14 +254,17 @@ function AttendanceHistory() {
       <Card className="overflow-hidden">
         <div className="border-b border-line px-5 py-4">
           <h2 className="text-sm font-semibold text-ink">Day by day</h2>
-          <p className="text-xs text-muted">Every recorded day in {monthLabel(month)}</p>
+          <p className="text-xs text-muted">
+            Every working day of {monthLabel(month)} · office unless a request
+            changed it
+          </p>
         </div>
 
         {records.length === 0 ? (
           <EmptyState
             icon={CalendarDays}
-            title="No records this month"
-            description="Try another month, or mark today from your dashboard."
+            title="No working days yet"
+            description="Days appear here as the month progresses."
           />
         ) : (
           <Table className="rounded-none border-0">
@@ -275,7 +278,7 @@ function AttendanceHistory() {
             </THead>
             <TBody>
               {records.map((record) => (
-                <Tr key={record.id}>
+                <Tr key={record.work_date}>
                   <Td className="whitespace-nowrap font-medium text-ink">
                     {formatDateFull(record.work_date)}
                   </Td>

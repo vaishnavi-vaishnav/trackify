@@ -205,22 +205,22 @@ function Dashboard() {
               {monthLabel(month)}
             </h2>
             <p className="mt-0.5 text-xs text-muted">
-              Every recorded day across {overview?.headcount ?? 0} people
+              Every working day across {overview?.headcount ?? 0} people
             </p>
           </div>
 
           {monthTotal === 0 ? (
             <EmptyState
               icon={CalendarClock}
-              title="No days recorded yet"
-              description="Attendance for this month will appear here as people mark their days."
+              title="No working days yet"
+              description="Days appear here as the month progresses."
             />
           ) : (
             <>
               <Donut
                 segments={segments}
                 size={190}
-                label={`${officePct}% of recorded days were worked from the office`}
+                label={`${officePct}% of working days were spent in the office`}
                 className="mt-6"
               >
                 <div className="text-center">
@@ -228,7 +228,7 @@ function Dashboard() {
                     {monthTotal}
                   </div>
                   <div className="mt-1 text-xs font-medium text-muted">
-                    days recorded
+                    working days
                   </div>
                 </div>
               </Donut>
@@ -355,7 +355,7 @@ function Dashboard() {
           days={dailyDays}
           summary={
             daysWithRecords > 0
-              ? `${daysWithRecords} of ${dailyDays.length} days have records`
+              ? `${daysWithRecords} working days so far`
               : `Nothing recorded yet in ${monthLabel(month)}`
           }
           className="mt-4"
@@ -395,12 +395,6 @@ function Dashboard() {
               <span className="text-muted">On leave</span>
               <span className="tabular font-semibold text-ink">
                 {stats.onLeaveToday}
-              </span>
-            </span>
-            <span className="inline-flex items-center gap-2 text-xs">
-              <span className="text-muted">Not recorded</span>
-              <span className="tabular font-semibold text-ink">
-                {stats.notRecordedToday}
               </span>
             </span>
           </div>

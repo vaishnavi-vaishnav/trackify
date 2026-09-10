@@ -13,29 +13,22 @@ const { splitCount } = require("../utils/pagination");
 const getDashboardStatistics = async () => {
     const stats = await adminModel.getDashboardStatistics();
 
-    const totalEmployees = Number(stats.total_employees);
-    const workingToday = Number(stats.working_today);
-    const onLeaveToday = Number(stats.on_leave_today);
-    const flybackToday = Number(stats.flyback_today);
-
+    // Nobody is ever "not recorded" now: everyone has a status every working
+    // day, the office by default, so the headcount is fully accounted for.
     return {
         success: true,
         data: {
-            totalEmployees,
+            totalEmployees: Number(stats.total_employees),
             totalLeads: Number(stats.total_leads),
             totalProjects: Number(stats.total_projects),
             pendingActivations: Number(stats.pending_activations),
             pendingLeave: Number(stats.pending_leave),
-            workingToday,
+            headcountToday: Number(stats.headcount_today),
+            workingToday: Number(stats.working_today),
             wfoToday: Number(stats.wfo_today),
             wfhToday: Number(stats.wfh_today),
-            onLeaveToday,
-            flybackToday,
-            // Everyone with no record for today at all.
-            notRecordedToday: Math.max(
-                totalEmployees - workingToday - onLeaveToday - flybackToday,
-                0,
-            ),
+            onLeaveToday: Number(stats.on_leave_today),
+            flybackToday: Number(stats.flyback_today),
         },
     };
 };

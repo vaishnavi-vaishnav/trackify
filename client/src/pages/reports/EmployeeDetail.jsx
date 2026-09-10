@@ -155,8 +155,8 @@ function EmployeeDetail({ backTo = "/admin/reports" }) {
           {total === 0 ? (
             <EmptyState
               icon={CalendarDays}
-              title="No days recorded"
-              description="Nothing was marked for this month."
+              title="No working days yet"
+              description="Days appear here as the month progresses."
             />
           ) : (
             <>
@@ -200,7 +200,7 @@ function EmployeeDetail({ backTo = "/admin/reports" }) {
               Week by week
             </h2>
             <p className="text-xs text-muted">
-              Each week of {monthLabel(month)} that has records
+              Each week of {monthLabel(month)} so far
             </p>
           </div>
 
@@ -208,7 +208,7 @@ function EmployeeDetail({ backTo = "/admin/reports" }) {
             <EmptyState
               icon={CalendarRange}
               title="No weekly data"
-              description="Weeks appear here once days are marked."
+              description="Weeks appear here as the month progresses."
             />
           ) : (
             <Table className="rounded-none border-0">
@@ -258,16 +258,16 @@ function EmployeeDetail({ backTo = "/admin/reports" }) {
         <div className="border-b border-line px-5 py-4">
           <h2 className="text-sm font-semibold text-ink">Day by day</h2>
           <p className="text-xs text-muted">
-            {records.length} recorded {records.length === 1 ? "day" : "days"} in{" "}
-            {monthLabel(month)}
+            {records.length} working {records.length === 1 ? "day" : "days"} in{" "}
+            {monthLabel(month)} · office unless a request changed it
           </p>
         </div>
 
         {records.length === 0 ? (
           <EmptyState
             icon={CalendarDays}
-            title="No days recorded"
-            description="Nothing was marked for this month."
+            title="No working days yet"
+            description="Days appear here as the month progresses."
           />
         ) : (
           <Table className="rounded-none border-0">
@@ -281,7 +281,7 @@ function EmployeeDetail({ backTo = "/admin/reports" }) {
             </THead>
             <TBody>
               {records.map((record) => (
-                <Tr key={record.id}>
+                <Tr key={record.work_date}>
                   <Td className="whitespace-nowrap font-medium text-ink">
                     {formatDateFull(record.work_date)}
                   </Td>

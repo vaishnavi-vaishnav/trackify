@@ -17,7 +17,7 @@ import { leaveTypes } from "../../lib/status";
 import { cn } from "../../lib/utils";
 
 const EMPTY = {
-  leaveType: "vacation",
+  leaveType: "leave",
   startDate: "",
   endDate: "",
   reason: "",
@@ -259,12 +259,12 @@ export function LeaveRequestModal({ open, onClose, projects = [], approverLabel,
           </div>
         )}
 
-        <Select
+        {/* <Select
           label="Project"
           name="projectId"
           value={form.projectId}
           onChange={change}
-          hint="Optional — which project this time off affects"
+          hint="Optional — which project this affects"
         >
           <option value="">No project</option>
           {projects.map((project) => (
@@ -272,7 +272,7 @@ export function LeaveRequestModal({ open, onClose, projects = [], approverLabel,
               {project.name}
             </option>
           ))}
-        </Select>
+        </Select> */}
 
         <Textarea
           label="Reason"

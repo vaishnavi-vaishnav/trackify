@@ -13,7 +13,7 @@ const createLeaveRequest = async (req, res) => {
         const leaveRequest = await leaveService.createLeaveRequest({
             userId: req.user.id,
             projectId: projectId || null,
-            leaveType: leaveType || "vacation",
+            leaveType: leaveType || "leave",
             startDate,
             endDate,
             reason,

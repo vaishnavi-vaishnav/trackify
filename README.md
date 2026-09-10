@@ -701,7 +701,7 @@ The full approval workflow. `approver_id` is the routing target captured when th
 | Column | Type | Notes |
 |--------|------|-------|
 | `user_id` | INT | Who requested it |
-| `leave_type` | VARCHAR(20) | `vacation` \| `sick` \| `flyback` \| `other` |
+| `leave_type` | VARCHAR(20) | `leave` \| `sick` \| `flyback` \| `other` |
 | `start_date` / `end_date` | DATE | Inclusive range |
 | `status` | VARCHAR(20) | `pending` \| `approved` \| `rejected` \| `cancelled` |
 | `approver_id` | INT | Routed to; `NULL` means the admin queue |

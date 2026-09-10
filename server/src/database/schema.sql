@@ -87,7 +87,7 @@ CREATE TABLE IF NOT EXISTS project_leads (
 -- ---------------------------------------------------------------------------
 -- Leave requests — full workflow with approval chain
 -- Status: pending, approved, rejected, cancelled
--- Request type: vacation, sick, flyback, wfh, other — every exception to the
+-- Request type: leave, sick, flyback, wfh, other — every exception to the
 -- default working day is raised and approved through this one table.
 -- CREATED BEFORE ATTENDANCE (for foreign key reference)
 -- ---------------------------------------------------------------------------
@@ -100,7 +100,7 @@ CREATE TABLE IF NOT EXISTS leave_requests (
     id             SERIAL PRIMARY KEY,
     user_id        INT NOT NULL,
     project_id     INT,
-    leave_type     VARCHAR(20) NOT NULL DEFAULT 'vacation' CHECK (leave_type IN ('vacation', 'sick', 'flyback', 'wfh', 'other')),
+    leave_type     VARCHAR(20) NOT NULL DEFAULT 'leave' CHECK (leave_type IN ('leave', 'sick', 'flyback', 'wfh', 'other')),
     start_date     DATE NOT NULL,
     end_date       DATE NOT NULL,
     reason         TEXT NOT NULL,
@@ -238,7 +238,7 @@ ALTER TABLE attendance ADD CONSTRAINT attendance_status_check
 
 ALTER TABLE leave_requests DROP CONSTRAINT IF EXISTS leave_requests_leave_type_check;
 ALTER TABLE leave_requests ADD CONSTRAINT leave_requests_leave_type_check
-    CHECK (leave_type IN ('vacation', 'sick', 'flyback', 'wfh', 'other'));
+    CHECK (leave_type IN ('leave', 'sick', 'flyback', 'wfh', 'other'));
 
 -- ---------------------------------------------------------------------------
 -- Audit Logs — track all changes for compliance and debugging

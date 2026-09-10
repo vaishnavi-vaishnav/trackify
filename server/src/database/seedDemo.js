@@ -175,15 +175,17 @@ const seedDemo = async () => {
 
     const leaves = [
         // Pending, waiting on a lead.
-        { who: "DEMO_E01", type: "vacation", from: offset(7), to: offset(9), reason: "Family wedding.", status: "pending" },
+        { who: "DEMO_E01", type: "leave", from: offset(7), to: offset(9), reason: "Family wedding.", status: "pending" },
+        { who: "DEMO_E04", type: "wfh", from: offset(2), to: offset(2), reason: "Engineer visiting to fix the boiler.", status: "pending" },
+        { who: "DEMO_E06", type: "wfh", from: offset(-4), to: offset(-2), reason: "Focus week on the migration.", status: "approved", by: "DEMO_L03" },
         { who: "DEMO_E04", type: "sick", from: offset(3), to: offset(3), reason: "Doctor's appointment.", status: "pending" },
         { who: "DEMO_E07", type: "flyback", from: offset(12), to: offset(14), reason: "Quarterly flyback home.", status: "pending" },
         // Pending, waiting on the admin (a lead's own request).
-        { who: "DEMO_L02", type: "vacation", from: offset(20), to: offset(24), reason: "Annual leave.", status: "pending" },
+        { who: "DEMO_L02", type: "leave", from: offset(20), to: offset(24), reason: "Annual leave.", status: "pending" },
         // Approved — these also write attendance days.
-        { who: "DEMO_E02", type: "vacation", from: offset(-12), to: offset(-10), reason: "Short break.", status: "approved", by: "DEMO_L01" },
+        { who: "DEMO_E02", type: "leave", from: offset(-12), to: offset(-10), reason: "Short break.", status: "approved", by: "DEMO_L01" },
         { who: "DEMO_E09", type: "flyback", from: offset(-20), to: offset(-18), reason: "Flyback home.", status: "approved", by: "DEMO_L04" },
-        { who: "DEMO_L03", type: "vacation", from: offset(-30), to: offset(-28), reason: "Family time.", status: "approved", by: null },
+        { who: "DEMO_L03", type: "leave", from: offset(-30), to: offset(-28), reason: "Family time.", status: "approved", by: null },
         // Rejected.
         { who: "DEMO_E05", type: "other", from: offset(-5), to: offset(-5), reason: "Personal errand.", status: "rejected", by: "DEMO_L02" },
     ];

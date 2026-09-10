@@ -38,7 +38,7 @@ export const leaveStatus = {
  */
 export const leaveTypes = [
   { value: "wfh", label: "Work from home" },
-  { value: "vacation", label: "Vacation" },
+  { value: "leave", label: "Leave" },
   { value: "sick", label: "Sick leave" },
   { value: "flyback", label: "Flyback" },
   { value: "other", label: "Other" },

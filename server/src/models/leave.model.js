@@ -7,7 +7,7 @@ const pool = require("../database/db");
  * the admin queue.
  */
 
-const LEAVE_TYPES = ["vacation", "sick", "flyback", "wfh", "other"];
+const LEAVE_TYPES = ["leave", "sick", "flyback", "wfh", "other"];
 
 /** Requester, approver and project details joined onto a request row. */
 const REQUEST_SELECT = `
@@ -42,7 +42,7 @@ const createLeaveRequest = async (leaveData) => {
         [
             leaveData.userId,
             leaveData.projectId || null,
-            leaveData.leaveType || "vacation",
+            leaveData.leaveType || "leave",
             leaveData.startDate,
             leaveData.endDate,
             leaveData.reason,

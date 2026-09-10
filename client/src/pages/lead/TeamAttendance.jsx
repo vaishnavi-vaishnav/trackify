@@ -225,7 +225,7 @@ function TeamAttendance() {
         <p className="flex items-center gap-1.5 px-1 text-xs text-faint">
           <CalendarDays className="h-3.5 w-3.5" aria-hidden="true" />
           Everyone is in the office by default. To change a day, decide the
-          request behind it in Leave Approvals.
+          request behind it in Approvals.
         </p>
       )}
     </div>

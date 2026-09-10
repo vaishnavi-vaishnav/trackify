@@ -247,7 +247,7 @@ function Dashboard() {
           days={dailyDays}
           summary={
             daysWithRecords > 0
-              ? `${daysWithRecords} of ${dailyDays.length} days have records`
+              ? `${daysWithRecords} working days so far`
               : `Nothing recorded yet in ${monthLabel(month)}`
           }
           className="mt-4"
